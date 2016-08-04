@@ -174,6 +174,11 @@
     
 }
 
+- (void)reloadData {
+    self.maxRows = self.listItems.count;
+    self.defaultTitle = self.listItems[0];
+    [self.dropListTableView reloadData];
+}
 #pragma mark - cell分割线填满
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {

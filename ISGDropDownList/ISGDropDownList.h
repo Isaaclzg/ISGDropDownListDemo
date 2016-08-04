@@ -39,6 +39,8 @@ IB_DESIGNABLE
 /*! @brief  当前选项值 */
 @property (nonatomic, copy, readonly) NSString *value;
 
+
+- (void)reloadData;
 /**
  *  关闭下拉菜单
  */

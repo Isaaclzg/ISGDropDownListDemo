@@ -12,12 +12,21 @@
 
 @interface ViewController ()
 
+/*! @brief <#name#> */
+@property (nonatomic, weak) ISGDropDownList *workStatus;
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(20, 50, 100, 30)];
+    [button setTitle:@"更新" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(gengxing) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
     
     NSArray *dataSource = @[@"iOS",@"Java",@"PHP"];
     ISGDropDownList *workStatus = [[ISGDropDownList alloc] initWithFrame:CGRectMake(20, 100, 300, 30)];
@@ -38,12 +47,18 @@
     // 标题大小
     workStatus.titleSize = 14;
     // 下拉选中的block
+    __weak typeof(self) weakSelf = self;
     workStatus.ClickDropDown = ^(NSInteger index){
         
-        
-        NSLog(@"选择了-------------:%@",dataSource[index]);
+        NSLog(@"选择了-------------:%@",weakSelf.workStatus.listItems[index]);
     };
     [self.view addSubview:workStatus];
+    self.workStatus = workStatus;
+}
+
+- (void)gengxing {
+    self.workStatus.listItems = @[@"1",@"2",@"4",@"33",@"22",@"11"];
+    [self.workStatus reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
