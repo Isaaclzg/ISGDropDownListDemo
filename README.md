@@ -1,5 +1,6 @@
 # ISGDropDownList
 
+![image](http://oodl5p9nn.bkt.clouddn.com/ISGDropDownList.gif)
 
     NSArray *dataSource = @[@"iOS",@"Java",@"PHP"];
     ISGDropDownList *workStatus = [[ISGDropDownList alloc] initWithFrame:CGRectMake(20, 100, 300, 30)];
